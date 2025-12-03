@@ -13,62 +13,97 @@ st.set_page_config(page_title="Wordpedia", page_icon="📚", layout="wide")
 def load_theme_css():
     st.markdown("""
     <style>
-    /* Detect Streamlit theme variables */
-    :root {
-        --bg-color: var(--background-color);
-        --text-color: var(--text-color);
-        --card-bg: var(--block-background-color);
-        --shadow: rgba(0, 0, 0, 0.15);
+
+    /* Default = Light mode */
+    body, .main {
+        background-color: #f8f9fc !important;
+        color: #333333 !important;
     }
 
-    /* Title styling */
+    .card {
+        background: #ffffff !important;
+        color: #333333 !important;
+        padding: 25px 30px;
+        border-radius: 18px;
+        box-shadow: 0px 8px 30px rgba(0,0,0,0.06);
+        margin-top: 25px;
+        transition: all 0.3s ease;
+    }
+
+    .card:hover {
+        box-shadow: 0px 12px 40px rgba(0,0,0,0.12);
+    }
+
     .wordpedia-title {
         font-size: 60px;
         font-weight: 800;
-        color: var(--text-color);
         text-align: center;
         margin-top: -30px;
         letter-spacing: 2px;
+        color: #333333 !important;
     }
 
-    /* Subheader */
     .wordpedia-sub {
         font-size: 24px;
         text-align: center;
-        color: var(--text-color);
-        opacity: 0.75;
+        color: #6C6C6C !important;
         margin-bottom: 10px;
     }
 
-    /* Caption */
     .wordpedia-caption {
         font-size: 16px;
         text-align: center;
-        color: var(--text-color);
-        opacity: 0.6;
+        color: #888888 !important;
         margin-bottom: 30px;
-    }
-
-    /* Card */
-    .card {
-        background: var(--card-bg);
-        padding: 25px 30px;
-        border-radius: 18px;
-        box-shadow: 0px 8px 22px var(--shadow);
-        margin-top: 25px;
-    }
-    .card:hover {
-        box-shadow: 0px 12px 35px var(--shadow);
     }
 
     p {
         font-size: 18px;
-        color: var(--text-color);
+        color: #333333 !important;
         line-height: 1.6;
     }
+
+    /* ------------------------ */
+    /* DARK MODE OVERRIDES     */
+    /* ------------------------ */
+    @media (prefers-color-scheme: dark) {
+
+        body, .main {
+            background-color: #0E1117 !important;
+            color: #E1E1E1 !important;
+        }
+
+        .card {
+            background: #161B22 !important;
+            color: #E1E1E1 !important;
+            box-shadow: 0px 8px 30px rgba(0,0,0,0.5);
+        }
+
+        .card:hover {
+            box-shadow: 0px 12px 40px rgba(255,255,255,0.05);
+        }
+
+        .wordpedia-title {
+            color: #E1E1E1 !important;
+        }
+
+        .wordpedia-sub {
+            color: #BBBBBB !important;
+        }
+
+        .wordpedia-caption {
+            color: #9A9A9A !important;
+        }
+
+        p {
+            color: #E1E1E1 !important;
+        }
+    }
+
     </style>
     """, unsafe_allow_html=True)
 
+load_theme_css()
 
 # ---- Page Content ----
 st.markdown('<div class="wordpedia-title">📘 Wordpedia</div>', unsafe_allow_html=True)
